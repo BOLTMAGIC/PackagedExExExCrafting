@@ -1,0 +1,33 @@
+{
+	"name": "Legendary Crafting",
+	"category": "packagedauto:recipe",
+	"icon": "packagedexexexcrafting:legendary_crafter",
+	"pages": [
+		{
+			"type": "patchouli:text",
+			"text": "$(thing)Legendary Crafting/$ is a crafting recipe type that uses the $(item)Legendary Package Crafter/$ to craft recipes craftable in an $(item)Legendary Crafting Table/$.$(p)Items crafted by the $(item)Legendary Package Crafter/$ will be ejected into adjacent inventories.$(p)The $(item)Legendary Package Crafter/$ requires power."
+		},
+		{
+			"type": "patchouli:spotlight",
+			"flag": "mod:ae2",
+			"item": "packagedexexexcrafting:legendary_crafter",
+			"link_recipe": true,
+			"title": "AE2 Integration",
+			"text": "The $(item)Legendary Package Crafter/$ can be connected to an $(thing)ME Network/$.$(p)It will extract power to use, and instead eject crafted items into the network."
+		},
+		{
+			"type": "patchouli:crafting",
+			"flag": "!mod:ae2",
+			"recipe": "packagedexexexcrafting:legendary_crafter",
+			"title": "Crafting"
+		},
+		{
+			"type": "patchouli:crafting",
+			"flag": "mod:ae2",
+			"recipe": "packagedexexexcrafting:legendary_crafter_ae",
+			"title": "Crafting"
+		}
+	],
+	"read_by_default": true,
+	"sortnum": 5051
+}
