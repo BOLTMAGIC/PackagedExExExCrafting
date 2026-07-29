@@ -85,8 +85,9 @@ sourceSets {
 }
 
 java {
+	// Use Java 21 toolchain to satisfy dependencies that require JVM runtime >= 21
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
+		languageVersion = JavaLanguageVersion.of(21)
 		vendor = JvmVendorSpec.AZUL
 	}
 	withSourcesJar()
@@ -94,6 +95,8 @@ java {
 
 tasks.withType(JavaCompile).configureEach {
 	options.encoding = "UTF-8"
+	// Compile with release 21 to match the toolchain/JVM target
+	options.release = 21
 }
 
 loom {
