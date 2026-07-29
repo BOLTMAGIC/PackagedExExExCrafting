@@ -21,6 +21,7 @@ import thelm.packagedexexexcrafting.block.entity.LegendaryCrafterBlockEntity;
 import thelm.packagedexexexcrafting.config.PackagedExExExCraftingConfig;
 import thelm.packagedexexexcrafting.menu.LegendaryCrafterMenu;
 import thelm.packagedexexexcrafting.recipe.LegendaryPackageRecipeType;
+import thelm.packagedexexexcrafting.network.Networking;
 
 import java.util.Objects;
 
@@ -64,12 +65,16 @@ public class CommonEventHandler {
 				build());
 	}
 
-	@SubscribeEvent
+	@SuppressWarnings("unused")
+    @SubscribeEvent
 	public void onCommonSetup(FMLCommonSetupEvent event) {
 		ApiImpl.INSTANCE.registerRecipeType(LegendaryPackageRecipeType.INSTANCE);
+		// register custom networking
+		Networking.register();
 	}
 
-	@SubscribeEvent
+	@SuppressWarnings("unused")
+    @SubscribeEvent
 	public void onModConfig(ModConfigEvent event) {
         if (Objects.requireNonNull(event.getConfig().getType()) == ModConfig.Type.SERVER) {
 			PackagedExExExCraftingConfig.reloadServerConfig();
