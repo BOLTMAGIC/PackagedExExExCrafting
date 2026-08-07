@@ -24,17 +24,17 @@ public class PacketGridDrag {
 
     public static void encode(PacketGridDrag pkt, FriendlyByteBuf buf) {
         buf.writeBlockPos(pkt.pos);
+        buf.writeInt(pkt.button);
         buf.writeInt(pkt.indices.length);
         for(int i : pkt.indices) buf.writeInt(i);
-        buf.writeInt(pkt.button);
     }
 
     public static PacketGridDrag decode(FriendlyByteBuf buf) {
         BlockPos pos = buf.readBlockPos();
+        int button = buf.readInt();
         int len = buf.readInt();
         int[] indices = new int[len];
         for(int i = 0; i < len; ++i) indices[i] = buf.readInt();
-        int button = buf.readInt();
         return new PacketGridDrag(pos, indices, button);
     }
 
