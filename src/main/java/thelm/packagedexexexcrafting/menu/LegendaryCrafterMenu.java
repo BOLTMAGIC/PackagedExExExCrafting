@@ -8,6 +8,7 @@ import thelm.packagedauto.menu.BaseMenu;
 import thelm.packagedauto.menu.factory.PositionalBlockEntityMenuFactory;
 import thelm.packagedauto.slot.RemoveOnlySlot;
 import thelm.packagedexexexcrafting.block.entity.LegendaryCrafterBlockEntity;
+import thelm.packagedexexexcrafting.slot.LegendaryCrafterRemoveOnlySlot;
 
 public class LegendaryCrafterMenu extends BaseMenu<LegendaryCrafterBlockEntity> {
 
@@ -15,11 +16,13 @@ public class LegendaryCrafterMenu extends BaseMenu<LegendaryCrafterBlockEntity> 
 
 	public LegendaryCrafterMenu(int windowId, Inventory inventory, LegendaryCrafterBlockEntity blockEntity) {
 		super(TYPE_INSTANCE, windowId, inventory, blockEntity);
-		// Keep only essential container slots (energy + output). The 13x13 grid is kept server-side
-		// and will be synced to the client via custom packets/NBT. This avoids registering 169
-		// container slots which would exceed the network slot index limit.
-		addSlot(new SlotItemHandler(itemHandler, 170, 8, 125)); // energy slot
-		addSlot(new RemoveOnlySlot(itemHandler, 169, 314, 125)); // output slot
+		addSlot(new SlotItemHandler(itemHandler, 170, 8, 125));
+		for(int i = 0; i < 13; ++i) {
+			for(int j = 0; j < 13; ++j) {
+				addSlot(new LegendaryCrafterRemoveOnlySlot(blockEntity, i*13+j, 44+j*18, 17+i*18));
+			}
+		}
+		addSlot(new RemoveOnlySlot(itemHandler, 169, 314, 125));
 		setupPlayerInventory();
 	}
 
