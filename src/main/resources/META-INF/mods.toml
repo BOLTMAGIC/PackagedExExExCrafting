@@ -12,6 +12,15 @@ issueTrackerURL = "https://github.com/TheLMiffy1111/PackagedExExExCrafting/issue
 	authors = "BOLTMAGIC, TheLMiffy1111"
 	displayURL = "https://www.curseforge.com/minecraft/mc-mods/packagedexexexcrafting"
 
+[[mods]]
+	modId = "vhtablefix"
+	version = "1.0.0"
+	displayName = "VH Table Fix"
+	description = "Raises the vanilla ServerboundContainerClickPacket changed-slots decode limit (128 -> 4096) so 13x13 Extended Crafting Legendary-table crafts don't kick the client."
+	authors = "ValhallaMC"
+	displayURL = "https://github.com/TheLMiffy1111/PackagedExExExCrafting"
+	mixins = "vhtablefix.mixins.json"
+
 [[dependencies.packagedexexexcrafting]]
 	modId = "forge"
 	versionRange = "[47,)"
@@ -36,3 +45,9 @@ issueTrackerURL = "https://github.com/TheLMiffy1111/PackagedExExExCrafting/issue
 	modId = "extendedcrafting"
 	versionRange = "*"
 	mandatory = true
+
+[[dependencies.vhtablefix]]
+	modId = "forge"
+	versionRange = "[47,)"
+	mandatory = true
+
